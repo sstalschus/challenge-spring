@@ -1,4 +1,4 @@
-package com.bootcamp.challenge.spring.repositories;
+package com.bootcamp.challenge.spring.repositories.interfaces;
 
 import java.util.List;
 

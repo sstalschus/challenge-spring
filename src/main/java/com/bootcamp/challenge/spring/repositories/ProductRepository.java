@@ -1,8 +1,10 @@
 package com.bootcamp.challenge.spring.repositories;
 
+import com.bootcamp.challenge.spring.repositories.interfaces.Repository;
+
 import java.util.List;
 
-public class ProductRepository implements Repository <Product>{
+public class ProductRepository implements Repository<Product> {
     @Override
     public void create(Product product) {
 
