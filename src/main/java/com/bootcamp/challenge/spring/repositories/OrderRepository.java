@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +20,15 @@ public class OrderRepository implements Repository<Order> {
     private List<Order> orders = new ArrayList<>();
     private ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     private final String PATH = "orders.json";
+
+
+    public OrderRepository() throws IOException {
+        try  {
+            loadOrderList();
+        } catch (FileNotFoundException e) {
+            saveFile();
+        }
+    }
 
     @Override
     public void create(Order order) throws IOException {
