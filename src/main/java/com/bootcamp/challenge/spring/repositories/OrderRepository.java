@@ -20,10 +20,6 @@ public class OrderRepository implements Repository<Order> {
     private ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     private final String PATH = "orders.json";
 
-    public OrderRepository() throws IOException {
-        this.loadOrderList();
-    }
-
     @Override
     public void create(Order order) throws IOException {
         order.setId(System.currentTimeMillis());
