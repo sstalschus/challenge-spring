@@ -40,7 +40,8 @@ public class OrderRepository implements Repository<Order> {
     }
 
     @Override
-    public List<Order> list(Order order) {
+    public List<Order> list(Order order) throws IOException {
+        loadOrderList();
         return this.orders;
     }
 
