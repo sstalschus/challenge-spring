@@ -1,8 +1,10 @@
 package com.bootcamp.challenge.spring.repositories;
 
-import java.util.List;
 
-public class OrderRepository implements Repository<Order>{
+import com.bootcamp.challenge.spring.entities.Order;
+import com.bootcamp.challenge.spring.repositories.interfaces.Repository;
+
+public class OrderRepository implements Repository<Order> {
     @Override
     public void create(Order order) {
 
