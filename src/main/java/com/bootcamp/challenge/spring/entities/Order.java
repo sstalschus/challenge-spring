@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Order {
-    private Integer id;
+    private Long id;
     private BigDecimal totalValue;
     private List<Product> productList;
 

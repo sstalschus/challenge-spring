@@ -1,5 +1,7 @@
 package com.bootcamp.challenge.spring.repositories;
 
+
+import com.bootcamp.challenge.spring.entities.Product;
 import com.bootcamp.challenge.spring.repositories.interfaces.Repository;
 
 import java.util.List;
