@@ -50,7 +50,7 @@ public class ProductRepository implements Repository<Product> {
     }
 
     @Override
-    public List<Product> list(Product product) {
+    public List<Product> list() {
         return this.products;
     }
 
