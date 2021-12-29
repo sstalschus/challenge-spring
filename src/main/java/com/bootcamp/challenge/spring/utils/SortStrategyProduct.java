@@ -4,7 +4,7 @@ import com.bootcamp.challenge.spring.entities.Product;
 
 import java.util.List;
 
-public enum ShortStrategyProduct {
+public enum SortStrategyProduct {
 
     ALPHABETICAL_ASC {
         @Override
