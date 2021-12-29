@@ -2,12 +2,14 @@ package com.bootcamp.challenge.spring.enums;
 
 public enum SortType {
 
-    DESC(0),
-    ASC(1);
+    ALPHABETICAL_ASC(0),
+    ALPHABETICAL_DESC(1),
+    PRICE_DESC(2),
+    PRICE_ASC(3);
 
     private int code;
 
-    private SortType (int code){
+    SortType (int code){
         this.code = code;
     }
 
@@ -21,6 +23,6 @@ public enum SortType {
                 return value;
             }
         }
-        throw new IllegalAccessException("Invalid OrderStatus code");
+        throw new IllegalAccessException("Invalid SortType code");
     }
 }
