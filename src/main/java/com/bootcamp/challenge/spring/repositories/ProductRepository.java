@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@org.springframework.stereotype.Repository
 public class ProductRepository implements Repository<Product> {
 
     private List<Product> products = new ArrayList<>();
