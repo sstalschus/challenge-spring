@@ -39,13 +39,12 @@ public class OrderRepository implements Repository<Order> {
 
     @Override
     public void delete(Order order) throws IOException {
-
+        orders.remove(order);
         saveFile();
     }
 
     @Override
     public void update(Order order) throws IOException {
-
         saveFile();
     }
 
