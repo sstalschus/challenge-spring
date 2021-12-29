@@ -6,6 +6,7 @@ import com.bootcamp.challenge.spring.entities.Product;
 import com.bootcamp.challenge.spring.repositories.interfaces.Repository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,7 +34,7 @@ public class ProductRepository implements Repository<Product> {
     @Override
     public void create(Product product) throws IOException {
         product.setId(System.currentTimeMillis());
-        products.add(product);
+        this.products.add(product);
         saveFile();
     }
 
@@ -60,6 +61,7 @@ public class ProductRepository implements Repository<Product> {
     private void loadOrderList() throws IOException {
         File file = new File(PATH);
         FileInputStream fileInputStream = new FileInputStream(file);
-        this.products = Arrays.asList(objectMapper.readValue(fileInputStream, Product[].class));
+        List<Product> productsInFile = Arrays.asList(objectMapper.readValue(fileInputStream, Product[].class));
+        products.addAll(productsInFile);
     }
 }
