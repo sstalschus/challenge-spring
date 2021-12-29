@@ -1,0 +1,109 @@
+[ {
+  "id" : 1640808577706,
+  "name" : "Serra de Bancada",
+  "category" : "Ferramentas",
+  "brand" : "FORTGPRO",
+  "price" : 1.800,
+  "quantity" : 5,
+  "freeshiping" : true,
+  "prestige" : "****"
+}, {
+  "id" : 1640808761452,
+  "name" : "Furadeira",
+  "category" : "Ferramentas",
+  "brand" : "Black & Decker",
+  "price" : 500,
+  "quantity" : 7,
+  "freeshiping" : true,
+  "prestige" : "****"
+}, {
+  "id" : 1640808934355,
+  "name" : "Soldadora",
+  "category" : "Ferramentas",
+  "brand" : "Black & Decker",
+  "price" : 350,
+  "quantity" : 10,
+  "freeshiping" : true,
+  "prestige" : "***"
+}, {
+  "id" : 1640809080404,
+  "name" : "Chuteira",
+  "category" : "Esportes",
+  "brand" : "Adidas",
+  "price" : 235,
+  "quantity" : 6,
+  "freeshiping" : true,
+  "prestige" : "*****"
+}, {
+  "id" : 1640809280630,
+  "name" : "Mini Cama Elastíca",
+  "category" : "Esportes",
+  "brand" : "Starboard",
+  "price" : 183,
+  "quantity" : 4,
+  "freeshiping" : true,
+  "prestige" : "*****"
+}, {
+  "id" : 1640809435950,
+  "name" : "Camiseta",
+  "category" : "Esportes",
+  "brand" : "Topper",
+  "price" : 80,
+  "quantity" : 2,
+  "freeshiping" : false,
+  "prestige" : "***"
+}, {
+  "id" : 1640809612485,
+  "name" : "Redmi Note 9",
+  "category" : "Celulares",
+  "brand" : "Xiaomi",
+  "price" : 2.800,
+  "quantity" : 15,
+  "freeshiping" : true,
+  "prestige" : "****"
+}, {
+  "id" : 1640809842399,
+  "name" : "Smartwatch",
+  "category" : "Celulares",
+  "brand" : "Noga",
+  "price" : 1.200,
+  "quantity" : 20,
+  "freeshiping" : false,
+  "prestige" : "**"
+}, {
+  "id" : 1640810200874,
+  "name" : "Camisa",
+  "category" : "Roupas",
+  "brand" : "Fila",
+  "price" : 79,
+  "quantity" : 2,
+  "freeshiping" : false,
+  "prestige" : "***"
+}, {
+  "id" : 1640810382268,
+  "name" : "Calça",
+  "category" : "Roupas",
+  "brand" : "Oakley",
+  "price" : 73,
+  "quantity" : 6,
+  "freeshiping" : false,
+  "prestige" : "***"
+}, {
+  "id" : 1640810674306,
+  "name" : "Meias",
+  "category" : "Roupas",
+  "brand" : "Gonew",
+  "price" : 10,
+  "quantity" : 8,
+  "freeshiping" : false,
+  "prestige" : "*"
+}, {
+  "id" : 1640810771994,
+  "name" : "Shorts",
+  "category" : "Roupas",
+  "brand" : "Lacoste",
+  "price" : 275,
+  "quantity" : 9,
+  "freeshiping" : true,
+  "prestige" : "***"
+} ]
