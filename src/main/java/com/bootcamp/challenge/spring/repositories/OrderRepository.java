@@ -5,6 +5,7 @@ import com.bootcamp.challenge.spring.entities.Order;
 import com.bootcamp.challenge.spring.repositories.interfaces.Repository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,12 +18,14 @@ import java.util.List;
 @org.springframework.stereotype.Repository
 public class OrderRepository implements Repository<Order> {
 
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> orders;
     private ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     private final String PATH = "orders.json";
 
 
     public OrderRepository() throws IOException {
+        orders = new ArrayList<>();
+        orders.add(new Order());
         try  {
             loadOrderList();
         } catch (FileNotFoundException e) {
@@ -60,6 +63,7 @@ public class OrderRepository implements Repository<Order> {
     private void loadOrderList() throws IOException {
         File file = new File(PATH);
         FileInputStream fileInputStream = new FileInputStream(file);
-        this.orders = Arrays.asList(objectMapper.readValue(fileInputStream, Order[].class));
+        List<Order> ordersInFile = Arrays.asList(objectMapper.readValue(fileInputStream, Order[].class));
+        orders.addAll(ordersInFile);
     }
 }
