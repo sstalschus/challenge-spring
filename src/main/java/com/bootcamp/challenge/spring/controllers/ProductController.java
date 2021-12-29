@@ -26,10 +26,15 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("")
-    public ResponseEntity<Product> create(Product product){
+    public ResponseEntity<Product> create(@RequestBody Product product){
         productService.createProduct(product);
-
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<Product>> get(@Nullable @RequestParam String category, @Nullable @RequestParam Boolean freeShiping, @Nullable @RequestParam String product, @Nullable @RequestParam String brand, @Nullable @RequestParam Integer order) {
+
+        return ResponseEntity.of()
     }
 
     @PatchMapping("/")
@@ -39,14 +44,7 @@ public class ProductController {
 
     @DeleteMapping("/")
     public String delete(){
-
         return "Delete";
     }
 }
 
-
-    @GetMapping("")
-    public String get(@Nullable @RequestParam String category, @Nullable @RequestParam Boolean freeShiping, @Nullable @RequestParam String product, @Nullable @RequestParam String brand, @Nullable @RequestParam Integer order) {
-        return "Parametros: order: "+ order + " category: " + category + " freeShiping: " + freeShiping + " product: " + product + " brand: " + brand;
-    }
-}
