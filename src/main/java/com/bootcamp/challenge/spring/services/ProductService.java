@@ -1,6 +1,7 @@
 package com.bootcamp.challenge.spring.services;
 
 import com.bootcamp.challenge.spring.entities.Product;
+import com.bootcamp.challenge.spring.enums.SortType;
 import com.bootcamp.challenge.spring.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

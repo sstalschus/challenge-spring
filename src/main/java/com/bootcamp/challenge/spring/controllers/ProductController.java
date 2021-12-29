@@ -42,8 +42,6 @@ public class ProductController {
 
         return "Delete";
     }
-}
-
 
     @GetMapping("")
     public String get(@Nullable @RequestParam String category, @Nullable @RequestParam Boolean freeShiping, @Nullable @RequestParam String product, @Nullable @RequestParam String brand, @Nullable @RequestParam Integer order) {
