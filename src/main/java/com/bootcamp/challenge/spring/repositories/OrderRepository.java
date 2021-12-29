@@ -52,7 +52,7 @@ public class OrderRepository implements Repository<Order> {
     }
 
     @Override
-    public List<Order> list(Order order) {
+    public List<Order> list() {
         return this.orders;
     }
 

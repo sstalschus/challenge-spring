@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -16,17 +17,16 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public void createProduct(Product product){
-
         try{
             productRepository.create(product);
 
         } catch (IOException exception){
             System.out.println(exception.getMessage());
-
         }
+    }
 
-
-
+    public List<Product> listAllProducts(){
+        return productRepository.list();
 
     }
 }

@@ -34,7 +34,7 @@ public class ProductController {
     @GetMapping("")
     public ResponseEntity<List<Product>> get(@Nullable @RequestParam String category, @Nullable @RequestParam Boolean freeShiping, @Nullable @RequestParam String product, @Nullable @RequestParam String brand, @Nullable @RequestParam Integer order) {
 
-        return ResponseEntity.of()
+        return ResponseEntity.ok(productService.listAllProducts());
     }
 
     @PatchMapping("/")
