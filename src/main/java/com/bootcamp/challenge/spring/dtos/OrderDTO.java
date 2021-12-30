@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @NoArgsConstructor
@@ -15,6 +16,7 @@ import java.util.List;
 public class OrderDTO implements ConvertDTO<Order, OrderDTO> {
 
     private List<Product> productList;
+    private BigDecimal totalValue;
 
     @Override
     public Order convert() {
@@ -24,11 +26,7 @@ public class OrderDTO implements ConvertDTO<Order, OrderDTO> {
     @Override
     public OrderDTO convert(Order order) {
         this.productList = order.getProductList();
+        this.totalValue = order.getTotalValue();
         return this;
-    }
-
-    public Double getTotal() {
-        return productList.stream()
-                .mapToDouble(product -> product.getPrice().doubleValue() * product.getQuantity()).sum();
     }
 }

@@ -16,6 +16,7 @@ public class PersistanceAdviceRepository {
             String bodyOfResponse = ex.getMessage();
             return ResponseEntity.badRequest().body(bodyOfResponse);
         }
+
         @ExceptionHandler(value = ProductNotFoundException.class)
         protected ResponseEntity<Object> handlePersistencia(ProductNotFoundException ex, WebRequest request) {
             String bodyOfResponse = ex.getMessage();
