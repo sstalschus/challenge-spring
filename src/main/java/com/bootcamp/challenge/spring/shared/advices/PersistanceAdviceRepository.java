@@ -1,5 +1,6 @@
 package com.bootcamp.challenge.spring.shared.advices;
 
+import com.bootcamp.challenge.spring.shared.exceptions.IllegalProductAtributesException;
 import com.bootcamp.challenge.spring.shared.exceptions.ProductNotFoundException;
 import com.bootcamp.challenge.spring.shared.exceptions.RepositoryException;
 import org.springframework.http.HttpStatus;
@@ -15,9 +16,16 @@ public class PersistanceAdviceRepository {
             String bodyOfResponse = ex.getMessage();
             return ResponseEntity.badRequest().body(bodyOfResponse);
         }
+
         @ExceptionHandler(value = ProductNotFoundException.class)
         protected ResponseEntity<Object> handlePersistencia(ProductNotFoundException ex, WebRequest request) {
             String bodyOfResponse = ex.getMessage();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(bodyOfResponse);
+        }
+
+        @ExceptionHandler(value = IllegalProductAtributesException.class)
+        protected ResponseEntity<Object> handlePersistencia(IllegalProductAtributesException ex, WebRequest request) {
+            String bodyOfResponse = ex.getMessage();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(bodyOfResponse);
         }
 }
