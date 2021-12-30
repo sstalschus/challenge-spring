@@ -14,14 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+/**Controladora para receber requisições HTTP relacionadas a ordem de compra
+ * @author Daniel Ramos
+ * @author Arthur Amorim
+ * @author Lorraine Mendes
+ * */
 @RestController
 @RequestMapping("/purchase-request")
 public class OrderController {
 
+    /**Injeção de dependencia do Serviço de Pedidos
+     * */
     @Autowired
     private OrderService orderService;
 
+    /**
+     * Entpoint para o cadastro de um novo pedido com produtos.
+     * @param productList - Lista contendo ID e Quantidade de Cada produto referente a ordem que sera criada
+     * @return ResponseEntity<OrderDTO> - Retorna a Ordem de Compra
+     * */
     @PostMapping(value = "")
     public ResponseEntity<OrderDTO> createOrder(@RequestBody List<ProductCreateOrderDTO> productList){
         OrderDTO orderDTO = new OrderDTO().convert(
