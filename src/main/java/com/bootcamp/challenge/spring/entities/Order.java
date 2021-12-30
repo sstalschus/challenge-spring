@@ -8,6 +8,12 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.List;
 
+/** Entidade Pedido
+ *
+ * @author Arthur Amorim
+ * @author Daniel Ramos
+ *
+ * */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +23,13 @@ public class Order {
     private BigDecimal totalValue;
     private List<Product> productList;
 
+    /** Construtor de Pedidos
+     *
+     * @author Arthur Amorim
+     *
+     * @param  productList - Id do produto
+     *
+     * */
     public Order(List<Product> productList) {
         this.productList = productList;
     }
