@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
  * @author Arthur Amorim
  * @author Lorraine Mendes
  * @author Jefferson Froes
+ *
  * */
 @Service
 public class ProductService {
@@ -42,6 +43,7 @@ public class ProductService {
      * @return Produto criado
      *
      * @throws RepositoryException - Exceção retornada quando ocorre qualquer erro de criação de produto que seja derivado de um IOExeption proveniente do repository.
+     *
      * */
     public Product createProduct(Product product){
         if (!productValid(product)) throw new IllegalProductAtributesException("Obligatory fields not found");
@@ -57,6 +59,7 @@ public class ProductService {
      * @author Jefferson Froes
      *
      * @return Lista de produtos
+     *
      * */
     public List<Product> listAllProducts(){
         return productRepository.list();
@@ -70,6 +73,7 @@ public class ProductService {
      * @param  product - Produto enviado pelo Client.
      *
      * @throws RepositoryException - Exceção retornada quando ocorre qualquer erro de atualização de produto que seja derivado de um IOExeption proveniente do repository.
+     *
      * */
     public void updateProduct(Product product) {
         try {
@@ -88,6 +92,7 @@ public class ProductService {
      * @return Lista de produtos
      *
      * @throws IllegalAccessException
+     *
      * */
     public List<Product> getList(Filter filter) throws IllegalAccessException {
 
@@ -107,6 +112,7 @@ public class ProductService {
      * @param  filter - Filtros enviados pelo cliente.
      *
      * @return Lista de produtos já filtrada
+     *
      * */
     private Set<Product> filterProductList(Filter filter) {
         Set<Product> products = new HashSet<>(productRepository.list());
@@ -127,6 +133,7 @@ public class ProductService {
      * @return Lista de produtos
      *
      * @throws IllegalAccessException
+     *
      * */
     private List<Product> orderByTypeOrder(Filter filter, Set<Product> products) throws IllegalAccessException {
         List<Product> finalProducts = new ArrayList<>(products);
@@ -145,6 +152,7 @@ public class ProductService {
      * @param  products - Set criado para que os produtos não se repitam.
      *
      * @return Lista de produtos
+     *
      * */
     private Set<Product> filterByBrandName(Filter filter, Set<Product> products) {
         if (filter.getBrandName() != null) {
@@ -161,6 +169,7 @@ public class ProductService {
      * @param  products - Set criado para que os produtos não se repitam.
      *
      * @return Lista de produtos
+     *
      * */
     private Set<Product> filterByProductName(Filter filter, Set<Product> products) {
         if (filter.getProductName() != null) {
@@ -177,6 +186,7 @@ public class ProductService {
      * @param  products - Set criado para que os produtos não se repitam.
      *
      * @return Lista de produtos
+     *
      * */
     private Set<Product> filterByFreeShiping(Filter filter, Set<Product> products) {
         if (filter.getFreeShiping() != null) {
@@ -193,6 +203,7 @@ public class ProductService {
      * @param  products - Set criado para que os produtos não se repitam.
      *
      * @return Lista de produtos
+     *
      * */
     private Set<Product> filterByCategory(Filter filter, Set<Product> products) {
         if (filter.getCategory() != null) {
@@ -210,6 +221,7 @@ public class ProductService {
      * @param  products - Set criado para que os produtos não se repitam.
      *
      * @return Lista de produtos
+     *
      * */
     private Set<Product> filterByPositiveStock(Set<Product> products) {
         return products.stream().filter(product -> product.getQuantity() > 0).collect(Collectors.toSet());
@@ -222,6 +234,7 @@ public class ProductService {
      * @param  product - Produto.
      *
      * @return Boolean com a informação
+     *
      * */
     public boolean productValid(Product product) {
         return product.getName() != null &&
