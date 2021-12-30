@@ -97,7 +97,8 @@ public class ProductService {
     public List<Product> getList(Filter filter) throws IllegalAccessException {
 
         if (!filter.hasFilter()) {
-            return productRepository.list();
+            return productRepository.list().stream()
+                    .filter(product -> product.getQuantity() > 0).collect(Collectors.toList());
         }
         Set<Product> products = filterProductList(filter);
         List<Product> finalProducts = orderByTypeOrder(filter, products);
@@ -115,7 +116,8 @@ public class ProductService {
      *
      * */
     private Set<Product> filterProductList(Filter filter) {
-        Set<Product> products = new HashSet<>(productRepository.list());
+        Set<Product> products = productRepository.list().stream()
+                .filter(product -> product.getQuantity() > 0).collect(Collectors.toSet());
         products = filterByCategory(filter, products);
         products = filterByFreeShiping(filter, products);
         products = filterByProductName(filter, products);
