@@ -10,14 +10,14 @@ public enum SortStrategyProduct {
     ALPHABETICAL_ASC {
         @Override
         public List<Product> sort(List<Product> products) {
-            System.out.println("Alphabetical asc Dentro do Strategy");
+            products.sort(Comparator.comparing(Product::getName));
             return products;
         }
     },
     ALPHABETICAL_DESC {
         @Override
         public List<Product> sort(List<Product> products) {
-            System.out.println("Alphabetical desc Dentro do Strategy");
+            products.sort(Comparator.comparing(Product::getName).reversed());
             return products;
         }
     },

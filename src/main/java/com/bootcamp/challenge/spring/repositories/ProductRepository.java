@@ -32,10 +32,11 @@ public class ProductRepository implements Repository<Product> {
     }
 
     @Override
-    public void create(Product product) throws IOException {
+    public Product create(Product product) throws IOException {
         product.setId(System.currentTimeMillis());
         this.products.add(product);
         saveFile();
+        return product;
     }
 
     @Override
@@ -46,6 +47,17 @@ public class ProductRepository implements Repository<Product> {
 
     @Override
     public void update(Product product) throws IOException {
+        for (Product element: this.products) {
+            if(product.equals(element)) {
+                if(product.getQuantity() != null) element.setQuantity(product.getQuantity());
+                if(product.getPrice() != null) element.setPrice(product.getPrice());
+                if(product.getCategory() != null) element.setCategory(product.getCategory());
+                if(product.getBrand() != null) element.setBrand(product.getBrand());
+                if(product.getName() != null) element.setName(product.getName());
+                if(product.getPrestige() != null) element.setPrestige(product.getPrestige());
+                if(product.getFreeshiping() != null) element.setFreeshiping(product.getFreeshiping());
+            }
+        }
         saveFile();
     }
 

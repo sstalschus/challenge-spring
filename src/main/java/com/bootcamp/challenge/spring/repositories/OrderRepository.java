@@ -34,10 +34,11 @@ public class OrderRepository implements Repository<Order> {
     }
 
     @Override
-    public void create(Order order) throws IOException {
+    public Order create(Order order) throws IOException {
         order.setId(System.currentTimeMillis());
         orders.add(order);
         saveFile();
+        return order;
     }
 
     @Override
