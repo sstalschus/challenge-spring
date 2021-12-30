@@ -22,15 +22,6 @@ public class OrderController {
 
     @PostMapping(value = "")
     public ResponseEntity<Order> createOrder(@RequestBody List<Product> productList){
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.createOrder(productList));
     }
-
-
-
-//    @getMapping(value = "")
-//    public ResponseEntity<List<Order>> getAllOrders(){
-//        try{
-//            return ResponseEntity.ok
-//        }
-//    }
 }
