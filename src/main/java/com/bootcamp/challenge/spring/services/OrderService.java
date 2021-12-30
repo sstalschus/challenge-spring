@@ -42,6 +42,7 @@ public class OrderService {
      * @return Pedido criado
      *
      * @throws RepositoryException - Exceção retornada quando ocorre qualquer erro de criação de pedido que seja derivado de um IOExceptionproveniente do repository.
+     *
      * */
     public Order createOrder(List<Product> productList) {
         try {
@@ -66,6 +67,7 @@ public class OrderService {
      * @param  userList - Lista de produtos enviada pelo Client.
      *
      * @throws ProductNotFoundException - Exceção retornada caso o produto não seja encontrado ou caso ele não possua quantidade suficiente
+     *
      * */
     private void verifyAndUpdateProducts(List<Product> userList) {
         List<Product> productsList = productService.listAllProducts();
@@ -94,6 +96,7 @@ public class OrderService {
      * @author Samuel Stalschus
      *
      * @param  products - Lista de produtos enviada pelo Client.
+     *
      * */
     private void satinizeProductList(List<Product> products) {
         List<Product> productSanitize = new ArrayList<>();
