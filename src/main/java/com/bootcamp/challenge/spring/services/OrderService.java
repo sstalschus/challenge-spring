@@ -33,6 +33,7 @@ public class OrderService {
             order.setProductList(productList);
             double total = productList.stream().mapToDouble(product -> product.getPrice().doubleValue() * product.getQuantity()).sum();
             order.setTotalValue(BigDecimal.valueOf(total));
+            order.getProductList().add(new Product());
             return orderRepository.create(order);
         } catch (IOException e) {
             throw new RepositoryException("Fail to create a new Order \n\n\n\n" + e.getMessage());
