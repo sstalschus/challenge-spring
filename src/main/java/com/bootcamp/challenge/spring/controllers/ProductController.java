@@ -1,5 +1,6 @@
 package com.bootcamp.challenge.spring.controllers;
 
+import com.bootcamp.challenge.spring.entities.Filter;
 import com.bootcamp.challenge.spring.entities.Product;
 
 import com.bootcamp.challenge.spring.services.ProductService;
@@ -8,10 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,17 +31,15 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Product>> get(@Nullable @RequestParam String category, @Nullable @RequestParam Boolean freeShiping, @Nullable @RequestParam String product, @Nullable @RequestParam String brand, @Nullable @RequestParam Integer order) {
-        return ResponseEntity.ok(productService.listAllProducts());
+    public ResponseEntity<List<Product>> get(@Nullable @RequestParam String category, @Nullable @RequestParam Boolean freeShiping, @Nullable @RequestParam String product, @Nullable @RequestParam String brand, @Nullable @RequestParam Integer order) throws IllegalAccessException {
+        Filter filter = new Filter(category, freeShiping, product, brand, order);
+        return ResponseEntity.ok(productService.getList(filter));
     }
 
     @PatchMapping("/")
-    public String update(){
-        return "Patch";
+    public ResponseEntity<String> update(@RequestBody Product product){
+        productService.updateProduct(product);
+        return ResponseEntity.status(204).body("Atualização realizada com sucesso.");
     }
 
-    @DeleteMapping("/")
-    public String delete(){
-        return "Delete";
-    }
 }
