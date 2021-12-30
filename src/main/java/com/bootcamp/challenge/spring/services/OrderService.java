@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -23,6 +27,7 @@ public class OrderService {
 
     public Order createOrder(List<Product> productList) {
         try {
+            satinizeProductList(productList);
             verifyAndUpdateProducts(productList);
             Order order = new Order();
             order.setProductList(productList);
@@ -55,5 +60,17 @@ public class OrderService {
             }
             if(count == 0) throw new ProductNotFoundException("Product ID "+ userProduct.getId() +" not found");
         });
+    }
+    private void satinizeProductList(List<Product> products) {
+        List<Product> productSanitize = new ArrayList<>();
+        products.forEach( product -> {
+            if (Collections.frequency(productSanitize, product) >=1)
+                productSanitize.get(productSanitize.indexOf(product))
+                        .setQuantity(productSanitize.get(productSanitize.indexOf(product)).getQuantity() + product.getQuantity());
+            else
+                productSanitize.add(product);
+        });
+        products.clear();
+        products.addAll(productSanitize);
     }
 }
