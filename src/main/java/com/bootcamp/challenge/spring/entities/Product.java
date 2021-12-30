@@ -22,4 +22,12 @@ public class Product {
     private Boolean freeshiping;
     private String prestige;
 
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)return true;
+        if (!(obj instanceof Product)) return false;
+        Product emp = (Product) obj;
+        return id.equals(emp.id);
+    }
 }
