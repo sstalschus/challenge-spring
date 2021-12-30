@@ -16,6 +16,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/** Service de pedidos
+ *
+ * @author Samuel Stalschus
+ * @author Arthur Amorim
+ * @author Daniel Ramos
+ * */
 @Service
 public class OrderService {
 
@@ -25,6 +31,18 @@ public class OrderService {
     @Autowired
     private ProductService productService;
 
+    /** Método usado para criar um novo pedido.
+     *
+     * @author Samuel Stalschus
+     * @author Arthur Amorim
+     * @author Daniel Ramos
+     *
+     * @param  productList - Lista de produtos enviada pelo Client.
+     *
+     * @return Pedido criado
+     *
+     * @throws RepositoryException - Exceção retornada quando ocorre qualquer erro de criação de pedido que seja derivado de um IOExceptionproveniente do repository.
+     * */
     public Order createOrder(List<Product> productList) {
         try {
             satinizeProductList(productList);
@@ -40,9 +58,17 @@ public class OrderService {
         }
     }
 
+    /** Método usado para verificar se todos os produtos informados na lista existem,
+     * se possuem quantidade disponível em estoque, e caso possua a quantidade é feito o update no estoque.
+     *
+     * @author Samuel Stalschus
+     *
+     * @param  userList - Lista de produtos enviada pelo Client.
+     *
+     * @throws ProductNotFoundException - Exceção retornada caso o produto não seja encontrado ou caso ele não possua quantidade suficiente
+     * */
     private void verifyAndUpdateProducts(List<Product> userList) {
         List<Product> productsList = productService.listAllProducts();
-
         userList.forEach(userProduct -> {
             int count = 0;
             for (Product product: productsList) {
@@ -62,6 +88,13 @@ public class OrderService {
             if(count == 0) throw new ProductNotFoundException("Product ID "+ userProduct.getId() +" not found");
         });
     }
+
+    /** Método usado para sanitizar os produtos, unificando as quantidades de um mesmo produto caso sejam enviadas separadamente
+     *
+     * @author Samuel Stalschus
+     *
+     * @param  products - Lista de produtos enviada pelo Client.
+     * */
     private void satinizeProductList(List<Product> products) {
         List<Product> productSanitize = new ArrayList<>();
         products.forEach( product -> {
