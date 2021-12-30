@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +23,20 @@ public class Product {
     private Boolean freeshiping;
     private String prestige;
 
+    public Product(String name, String category, String brand, BigDecimal price, Integer quantity, Boolean freeshiping, String prestige) {
+            this.name = name;
+            this.category = category;
+            this.brand = brand;
+            this.price = price;
+            this.quantity = quantity;
+        this.freeshiping = freeshiping;
+        this.prestige = prestige;
+    }
+
+    public Product(Long id, Integer quantity) {
+        this.id = id;
+        this.quantity = quantity;
+    }
 
     @Override
     public boolean equals(Object obj) {

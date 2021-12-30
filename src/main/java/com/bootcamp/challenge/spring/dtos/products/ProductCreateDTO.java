@@ -1,4 +1,4 @@
-package com.bootcamp.challenge.spring.dtos;
+package com.bootcamp.challenge.spring.dtos.products;
 
 import com.bootcamp.challenge.spring.dtos.interfaces.ConvertDTO;
 import com.bootcamp.challenge.spring.entities.Product;

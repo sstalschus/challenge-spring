@@ -1,4 +1,4 @@
-package com.bootcamp.challenge.spring.controllers;
+package com.bootcamp.challenge.spring.dtos;
 
 import com.bootcamp.challenge.spring.dtos.interfaces.ConvertDTO;
 import com.bootcamp.challenge.spring.entities.Filter;
@@ -15,7 +15,7 @@ public class FilterDTO implements ConvertDTO<Filter, FilterDTO> {
     private String brandName;
     private Integer order;
 
-    protected FilterDTO(String category, Boolean freeShiping, String productName, String brandName, Integer order) {
+    public FilterDTO(String category, Boolean freeShiping, String productName, String brandName, Integer order) {
         this.category = category;
         this.freeShiping = freeShiping;
         this.productName = productName;

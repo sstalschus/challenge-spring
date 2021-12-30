@@ -1,4 +1,4 @@
-package com.bootcamp.challenge.spring.dtos;
+package com.bootcamp.challenge.spring.dtos.products;
 
 import com.bootcamp.challenge.spring.dtos.interfaces.ConvertDTO;
 import com.bootcamp.challenge.spring.entities.Product;
@@ -23,13 +23,6 @@ public class ProductDTO implements ConvertDTO<Product, ProductDTO> {
     @Override
     public Product convert() {
         return new Product(name, category, brand, price, quantity,freeshiping, prestige);
-    }
-    public Integer getTotalMultiplicacao() {
-        return 100*10;
-    }
-
-    public String getDescription() {
-        return "descricao do produto";
     }
 
     @Override

@@ -17,4 +17,7 @@ public class Order {
     private BigDecimal totalValue;
     private List<Product> productList;
 
+    public Order(List<Product> productList) {
+        this.productList = productList;
+    }
 }

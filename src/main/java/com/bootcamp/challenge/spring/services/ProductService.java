@@ -42,59 +42,59 @@ public class ProductService {
         }
     }
 
-    public List<Product> getList(Filter filterDTO) throws IllegalAccessException {
+    public List<Product> getList(Filter filter) throws IllegalAccessException {
 
-        if (!filterDTO.hasFilter()) {
+        if (!filter.hasFilter()) {
             return productRepository.list();
         }
-        Set<Product> products = filterProductList(filterDTO);
-        List<Product> finalProducts = orderByTypeOrder(filterDTO, products);
+        Set<Product> products = filterProductList(filter);
+        List<Product> finalProducts = orderByTypeOrder(filter, products);
 
         return finalProducts;
     }
 
-    private Set<Product> filterProductList(Filter filterDTO) {
+    private Set<Product> filterProductList(Filter filter) {
         Set<Product> products = new HashSet<>(productRepository.list());
-        products = filterByCategory(filterDTO, products);
-        products = filterByFreeShiping(filterDTO, products);
-        products = filterByProductName(filterDTO, products);
-        products = filterByBrandName(filterDTO, products);
+        products = filterByCategory(filter, products);
+        products = filterByFreeShiping(filter, products);
+        products = filterByProductName(filter, products);
+        products = filterByBrandName(filter, products);
         return products;
     }
 
-    private List<Product> orderByTypeOrder(Filter filterDTO, Set<Product> products) throws IllegalAccessException {
+    private List<Product> orderByTypeOrder(Filter filter, Set<Product> products) throws IllegalAccessException {
         List<Product> finalProducts = new ArrayList<>(products);
-        if (filterDTO.getOrder() != null) {
-            SortType sortType = SortType.valueOf(filterDTO.getOrder());
+        if (filter.getOrder() != null) {
+            SortType sortType = SortType.valueOf(filter.getOrder());
             finalProducts = SortStrategyProduct.valueOf(sortType.name()).sort(finalProducts);
         }
         return finalProducts;
     }
 
-    private Set<Product> filterByBrandName(Filter filterDTO, Set<Product> products) {
-        if (filterDTO.getBrandName() != null) {
-            products = products.stream().filter(product -> product.getBrand().equals(filterDTO.getBrandName())).collect(Collectors.toSet());
+    private Set<Product> filterByBrandName(Filter filter, Set<Product> products) {
+        if (filter.getBrandName() != null) {
+            products = products.stream().filter(product -> product.getBrand().equals(filter.getBrandName())).collect(Collectors.toSet());
         }
         return products;
     }
 
-    private Set<Product> filterByProductName(Filter filterDTO, Set<Product> products) {
-        if (filterDTO.getProductName() != null) {
-            products = products.stream().filter(product -> product.getName().equals(filterDTO.getProductName())).collect(Collectors.toSet());
+    private Set<Product> filterByProductName(Filter filter, Set<Product> products) {
+        if (filter.getProductName() != null) {
+            products = products.stream().filter(product -> product.getName().equals(filter.getProductName())).collect(Collectors.toSet());
         }
         return products;
     }
 
-    private Set<Product> filterByFreeShiping(Filter filterDTO, Set<Product> products) {
-        if (filterDTO.getFreeShiping() != null) {
-            products = products.stream().filter(product -> product.getFreeshiping() == filterDTO.getFreeShiping()).collect(Collectors.toSet());
+    private Set<Product> filterByFreeShiping(Filter filter, Set<Product> products) {
+        if (filter.getFreeShiping() != null) {
+            products = products.stream().filter(product -> product.getFreeshiping() == filter.getFreeShiping()).collect(Collectors.toSet());
         }
         return products;
     }
 
-    private Set<Product> filterByCategory(Filter filterDTO, Set<Product> products) {
-        if (filterDTO.getCategory() != null) {
-            products = products.stream().filter(product -> product.getCategory().equals(filterDTO.getCategory())).collect(Collectors.toSet());
+    private Set<Product> filterByCategory(Filter filter, Set<Product> products) {
+        if (filter.getCategory() != null) {
+            products = products.stream().filter(product -> product.getCategory().equals(filter.getCategory())).collect(Collectors.toSet());
         }
         return products;
     }
