@@ -4,6 +4,7 @@ import com.bootcamp.challenge.spring.entities.Filter;
 import com.bootcamp.challenge.spring.entities.Product;
 import com.bootcamp.challenge.spring.enums.SortType;
 import com.bootcamp.challenge.spring.repositories.ProductRepository;
+import com.bootcamp.challenge.spring.shared.exceptions.IllegalProductAtributesException;
 import com.bootcamp.challenge.spring.shared.exceptions.RepositoryException;
 import com.bootcamp.challenge.spring.utils.SortStrategyProduct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public Product createProduct(Product product){
+        if (!productValid(product)) throw new IllegalProductAtributesException("Obligatory fields not found");
         try{
             return productRepository.create(product);
         } catch (IOException e) {
@@ -94,7 +96,9 @@ public class ProductService {
 
     private Set<Product> filterByCategory(Filter filter, Set<Product> products) {
         if (filter.getCategory() != null) {
-            products = products.stream().filter(product -> product.getCategory().equals(filter.getCategory())).collect(Collectors.toSet());
+            products = products.stream().filter(product -> {
+                return product.getCategory().equals(filter.getCategory());
+            }).collect(Collectors.toSet());
         }
         return products;
     }
@@ -103,5 +107,13 @@ public class ProductService {
         return products.stream().filter(product -> product.getQuantity() > 0).collect(Collectors.toSet());
     }
 
+    public boolean productValid(Product product) {
+        return product.getName() != null &&
+                product.getCategory() != null &&
+                product.getBrand() != null &&
+                product.getPrice() != null &&
+                product.getQuantity() != null &&
+                product.getFreeshiping() != null;
+    }
 
 }
