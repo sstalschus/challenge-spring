@@ -24,4 +24,5 @@ public class OrderController {
     public ResponseEntity<Order> createOrder(@RequestBody List<Product> productList){
         return ResponseEntity.status(HttpStatus.CREATED).body(orderService.createOrder(productList));
     }
+
 }

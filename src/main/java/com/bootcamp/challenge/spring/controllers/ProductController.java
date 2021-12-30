@@ -1,6 +1,6 @@
 package com.bootcamp.challenge.spring.controllers;
 
-import com.bootcamp.challenge.spring.dtos.FilterDTO;
+import com.bootcamp.challenge.spring.entities.Filter;
 import com.bootcamp.challenge.spring.entities.Product;
 
 import com.bootcamp.challenge.spring.services.ProductService;
@@ -32,22 +32,14 @@ public class ProductController {
 
     @GetMapping("")
     public ResponseEntity<List<Product>> get(@Nullable @RequestParam String category, @Nullable @RequestParam Boolean freeShiping, @Nullable @RequestParam String product, @Nullable @RequestParam String brand, @Nullable @RequestParam Integer order) throws IllegalAccessException {
-        FilterDTO filter = new FilterDTO(category, freeShiping, product, brand, order);
+        Filter filter = new Filter(category, freeShiping, product, brand, order);
         return ResponseEntity.ok(productService.getList(filter));
     }
 
-//    @GetMapping("")
-//    public ResponseEntity<List<Product>> getAllProduct() {
-//        return ResponseEntity.ok(productService.listAllProducts());
-//    }
-
     @PatchMapping("/")
-    public String update(){
-        return "Patch";
+    public ResponseEntity<String> update(@RequestBody Product product){
+        productService.updateProduct(product);
+        return ResponseEntity.status(204).body("Atualização realizada com sucesso.");
     }
 
-    @DeleteMapping("/")
-    public String delete(){
-        return "Delete";
-    }
 }

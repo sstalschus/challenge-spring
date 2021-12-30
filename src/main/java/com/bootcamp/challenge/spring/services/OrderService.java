@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class OrderService {
@@ -50,7 +49,7 @@ public class OrderService {
                     userProduct.setFreeshiping(product.getFreeshiping());
                     userProduct.setPrestige(product.getPrestige());
                     product.setQuantity(product.getQuantity() - userProduct.getQuantity());
-                    productService.updateProductQuantity(product);
+                    productService.updateProduct(product);
                     count++;
                 }
             }

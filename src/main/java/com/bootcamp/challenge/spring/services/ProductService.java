@@ -1,6 +1,6 @@
 package com.bootcamp.challenge.spring.services;
 
-import com.bootcamp.challenge.spring.dtos.FilterDTO;
+import com.bootcamp.challenge.spring.entities.Filter;
 import com.bootcamp.challenge.spring.entities.Product;
 import com.bootcamp.challenge.spring.enums.SortType;
 import com.bootcamp.challenge.spring.repositories.ProductRepository;
@@ -34,7 +34,7 @@ public class ProductService {
         return productRepository.list();
     }
 
-    public void updateProductQuantity(Product product) {
+    public void updateProduct(Product product) {
         try {
             productRepository.update(product);
         } catch (IOException e) {
@@ -42,7 +42,7 @@ public class ProductService {
         }
     }
 
-    public List<Product> getList(FilterDTO filterDTO) throws IllegalAccessException {
+    public List<Product> getList(Filter filterDTO) throws IllegalAccessException {
 
         if (!filterDTO.hasFilter()) {
             return productRepository.list();
@@ -53,7 +53,7 @@ public class ProductService {
         return finalProducts;
     }
 
-    private Set<Product> filterProductList(FilterDTO filterDTO) {
+    private Set<Product> filterProductList(Filter filterDTO) {
         Set<Product> products = new HashSet<>(productRepository.list());
         products = filterByCategory(filterDTO, products);
         products = filterByFreeShiping(filterDTO, products);
@@ -62,7 +62,7 @@ public class ProductService {
         return products;
     }
 
-    private List<Product> orderByTypeOrder(FilterDTO filterDTO, Set<Product> products) throws IllegalAccessException {
+    private List<Product> orderByTypeOrder(Filter filterDTO, Set<Product> products) throws IllegalAccessException {
         List<Product> finalProducts = new ArrayList<>(products);
         if (filterDTO.getOrder() != null) {
             SortType sortType = SortType.valueOf(filterDTO.getOrder());
@@ -71,28 +71,28 @@ public class ProductService {
         return finalProducts;
     }
 
-    private Set<Product> filterByBrandName(FilterDTO filterDTO, Set<Product> products) {
+    private Set<Product> filterByBrandName(Filter filterDTO, Set<Product> products) {
         if (filterDTO.getBrandName() != null) {
             products = products.stream().filter(product -> product.getBrand().equals(filterDTO.getBrandName())).collect(Collectors.toSet());
         }
         return products;
     }
 
-    private Set<Product> filterByProductName(FilterDTO filterDTO, Set<Product> products) {
+    private Set<Product> filterByProductName(Filter filterDTO, Set<Product> products) {
         if (filterDTO.getProductName() != null) {
             products = products.stream().filter(product -> product.getName().equals(filterDTO.getProductName())).collect(Collectors.toSet());
         }
         return products;
     }
 
-    private Set<Product> filterByFreeShiping(FilterDTO filterDTO, Set<Product> products) {
+    private Set<Product> filterByFreeShiping(Filter filterDTO, Set<Product> products) {
         if (filterDTO.getFreeShiping() != null) {
             products = products.stream().filter(product -> product.getFreeshiping() == filterDTO.getFreeShiping()).collect(Collectors.toSet());
         }
         return products;
     }
 
-    private Set<Product> filterByCategory(FilterDTO filterDTO, Set<Product> products) {
+    private Set<Product> filterByCategory(Filter filterDTO, Set<Product> products) {
         if (filterDTO.getCategory() != null) {
             products = products.stream().filter(product -> product.getCategory().equals(filterDTO.getCategory())).collect(Collectors.toSet());
         }
