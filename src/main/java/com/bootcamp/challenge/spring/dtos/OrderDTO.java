@@ -1,9 +1,9 @@
 package com.bootcamp.challenge.spring.dtos;
 
 import com.bootcamp.challenge.spring.dtos.interfaces.ConvertDTO;
+import com.bootcamp.challenge.spring.dtos.products.ProductDTO;
 import com.bootcamp.challenge.spring.entities.Order;
-import com.bootcamp.challenge.spring.entities.Product;
-import com.bootcamp.challenge.spring.shared.exceptions.RepositoryException;
+import com.bootcamp.challenge.spring.utils.ConvertUtils;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,7 +21,7 @@ import java.util.List;
 @Setter
 public class OrderDTO implements ConvertDTO<Order, OrderDTO> {
 
-    private List<Product> productList;
+    private List<ProductDTO> productList;
     private BigDecimal totalValue;
 
     /** Método usado para converter a entidade em pedido.
@@ -33,7 +33,7 @@ public class OrderDTO implements ConvertDTO<Order, OrderDTO> {
      * */
     @Override
     public Order convert() {
-        return new Order(this.productList);
+        return new Order(ConvertUtils.converteToProduct(this.productList));
     }
 
     /** Método usado para converter a entidade pedido em pedidoDTO .
@@ -47,7 +47,7 @@ public class OrderDTO implements ConvertDTO<Order, OrderDTO> {
      * */
     @Override
     public OrderDTO convert(Order order) {
-        this.productList = order.getProductList();
+        this.productList = ConvertUtils.convertToProductDTO(order.getProductList());
         this.totalValue = order.getTotalValue();
         return this;
     }

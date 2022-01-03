@@ -6,7 +6,7 @@ import com.bootcamp.challenge.spring.dtos.products.ProductDTO;
 import com.bootcamp.challenge.spring.dtos.products.ProductUpdateDTO;
 
 import com.bootcamp.challenge.spring.services.ProductService;
-import com.bootcamp.challenge.spring.utils.ProductUtil;
+import com.bootcamp.challenge.spring.utils.ConvertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,7 +71,7 @@ public class ProductController {
                                                 @Nullable @RequestParam String brand,
                                                 @Nullable @RequestParam Integer order) throws IllegalAccessException {
         FilterDTO filter = new FilterDTO(category, freeShiping, product, brand, order);
-        return ResponseEntity.ok(ProductUtil.convertToProductDTO(productService.getList(filter.convert())));
+        return ResponseEntity.ok(ConvertUtils.convertToProductDTO(productService.getList(filter.convert())));
     }
 
     /**
