@@ -46,7 +46,6 @@ public class OrderRepository implements Repository<Order> {
      * */
     public OrderRepository() throws IOException {
         orders = new ArrayList<>();
-        orders.add(new Order());
         try  {
             loadOrderList();
         } catch (FileNotFoundException e) {
