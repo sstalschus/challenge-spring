@@ -9,6 +9,11 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
+/** DTO de Criação de ProductUpdateDTO
+ *
+ * @author Arthur Amorim
+ *
+ * */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,11 +29,27 @@ public class ProductUpdateDTO implements ConvertDTO<Product, ProductUpdateDTO> {
     private Boolean freeshiping;
     private String prestige;
 
+    /** Método usado para converter a entidade em um Produto.
+     *
+     * @author Arthur Amorim
+     *
+     * @return Product
+     *
+     * */
     @Override
     public Product convert() {
         return new Product(id, name, category, brand, price, quantity,freeshiping, prestige);
     }
 
+    /** Método usado para converter a entidade product em um ProductUpdateDTO.
+     *
+     * @author Arthur Amorim
+     *
+     * @param  product - Entidade Product a ser convertida em ProductUpdateDTO.
+     *
+     * @return ProductUpdateDTO convertido
+     *
+     * */
     @Override
     public ProductUpdateDTO convert(Product product) {
         this.id = product.getId();

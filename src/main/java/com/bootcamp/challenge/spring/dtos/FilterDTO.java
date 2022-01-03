@@ -5,6 +5,11 @@ import com.bootcamp.challenge.spring.entities.Filter;
 import lombok.Getter;
 import lombok.Setter;
 
+/** DTO de filtros
+ *
+ * @author Arthur Amorim
+ *
+ * */
 @Getter
 @Setter
 public class FilterDTO implements ConvertDTO<Filter, FilterDTO> {
@@ -23,11 +28,27 @@ public class FilterDTO implements ConvertDTO<Filter, FilterDTO> {
         this.order = order;
     }
 
+    /** Método usado para converter a entidade em um Filtro.
+     *
+     * @author Arthur Amorim
+     *
+     * @return Filtro convertida
+     *
+     * */
     @Override
     public Filter convert() {
         return new Filter(category, freeShiping, productName, brandName, order);
     }
 
+    /** Método usado para converter a entidade filtro em filtroDTO .
+     *
+     * @author Arthur Amorim
+     *
+     * @param  filter - Entidade Pedido a ser convertida em filterDTO.
+     *
+     * @return Filter convertido
+     *
+     * */
     @Override
     public FilterDTO convert(Filter filter) {
         this.category = filter.getCategory();

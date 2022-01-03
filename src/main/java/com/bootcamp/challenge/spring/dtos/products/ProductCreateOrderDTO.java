@@ -6,6 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/** DTO de Criação de pedido
+ *
+ * @author Arthur Amorim
+ *
+ * */
 @NoArgsConstructor
 @Getter
 @Setter
@@ -14,11 +19,27 @@ public class ProductCreateOrderDTO implements ConvertDTO<Product, ProductCreateO
     private Long id;
     private Integer quantity;
 
+    /** Método usado para converter a entidade em um Produto.
+     *
+     * @author Arthur Amorim
+     *
+     * @return Product convertido
+     *
+     * */
     @Override
     public Product convert() {
         return new Product(id, quantity);
     }
 
+    /** Método usado para converter a entidade product em um ProductCreateOrderDTO.
+     *
+     * @author Arthur Amorim
+     *
+     * @param  product - Entidade Product a ser convertida em ProductCreateOrderDTO.
+     *
+     * @return ProductCreateOrderDTO convertido
+     *
+     * */
     @Override
     public ProductCreateOrderDTO convert(Product product) {
         this.id = product.getId();

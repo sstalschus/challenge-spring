@@ -13,6 +13,12 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Getter
 @Setter
+
+/** DTO de Criação de produto
+ *
+ * @author Arthur Amorim
+ *
+ * */
 public class ProductCreateDTO implements ConvertDTO<Product, ProductCreateDTO> {
 
     private String name;
@@ -23,11 +29,27 @@ public class ProductCreateDTO implements ConvertDTO<Product, ProductCreateDTO> {
     private Boolean freeshiping;
     private String prestige;
 
+    /** Método usado para converter a entidade em um Product.
+     *
+     * @author Arthur Amorim
+     *
+     * @return Entidade Product
+     *
+     * */
     @Override
     public Product convert() {
         return new Product(name,category,brand,price,quantity,freeshiping,prestige);
     }
 
+    /** Método usado para converter a entidade Product em um ProductCreateDTO.
+     *
+     * @author Arthur Amorim
+     *
+     * @param  product - Entidade Product a ser convertido.
+     *
+     * @return Filter convertido
+     *
+     * */
     @Override
     public ProductCreateDTO convert(Product product) {
         this.name = product.getName();
