@@ -19,6 +19,14 @@
   "totalValue" : null,
   "productList" : null
 }, {
+  "id" : null,
+  "totalValue" : null,
+  "productList" : null
+}, {
+  "id" : null,
+  "totalValue" : null,
+  "productList" : null
+}, {
   "id" : 1640840820086,
   "totalValue" : 1.8,
   "productList" : [ {
@@ -102,6 +110,137 @@
     "brand" : "FORTGPRO",
     "price" : 1800,
     "quantity" : 3,
+    "freeshiping" : true,
+    "prestige" : "****"
+  } ]
+}, {
+  "id" : 1641217538305,
+  "totalValue" : 1800.0,
+  "productList" : [ {
+    "id" : 1640808577706,
+    "name" : "Serra de Bancada",
+    "category" : "Ferramentas",
+    "brand" : "FORTGPRO",
+    "price" : 1800,
+    "quantity" : 1,
+    "freeshiping" : true,
+    "prestige" : "****"
+  }, {
+    "id" : null,
+    "name" : null,
+    "category" : null,
+    "brand" : null,
+    "price" : null,
+    "quantity" : null,
+    "freeshiping" : null,
+    "prestige" : null
+  } ]
+}, {
+  "id" : 1641217609843,
+  "totalValue" : 1800.0,
+  "productList" : [ {
+    "id" : 1640808577706,
+    "name" : "Serra de Bancada",
+    "category" : "Ferramentas",
+    "brand" : "FORTGPRO",
+    "price" : 1800,
+    "quantity" : 1,
+    "freeshiping" : true,
+    "prestige" : "****"
+  }, {
+    "id" : null,
+    "name" : null,
+    "category" : null,
+    "brand" : null,
+    "price" : null,
+    "quantity" : null,
+    "freeshiping" : null,
+    "prestige" : null
+  } ]
+}, {
+  "id" : 1641217718212,
+  "totalValue" : 1800.0,
+  "productList" : [ {
+    "id" : 1640808577706,
+    "name" : "Serra de Bancada",
+    "category" : "Ferramentas",
+    "brand" : "FORTGPRO",
+    "price" : 1800,
+    "quantity" : 1,
+    "freeshiping" : true,
+    "prestige" : "****"
+  }, {
+    "id" : null,
+    "name" : null,
+    "category" : null,
+    "brand" : null,
+    "price" : null,
+    "quantity" : null,
+    "freeshiping" : null,
+    "prestige" : null
+  } ]
+}, {
+  "id" : 1641217821644,
+  "totalValue" : 1800.0,
+  "productList" : [ {
+    "id" : 1640808577706,
+    "name" : "Serra de Bancada",
+    "category" : "Ferramentas",
+    "brand" : "FORTGPRO",
+    "price" : 1800,
+    "quantity" : 1,
+    "freeshiping" : true,
+    "prestige" : "****"
+  } ]
+}, {
+  "id" : 1641217856091,
+  "totalValue" : 1800.0,
+  "productList" : [ {
+    "id" : 1640808577706,
+    "name" : "Serra de Bancada",
+    "category" : "Ferramentas",
+    "brand" : "FORTGPRO",
+    "price" : 1800,
+    "quantity" : 1,
+    "freeshiping" : true,
+    "prestige" : "****"
+  } ]
+}, {
+  "id" : 1641217926455,
+  "totalValue" : 9000.0,
+  "productList" : [ {
+    "id" : 1640808577706,
+    "name" : "Serra de Bancada",
+    "category" : "Ferramentas",
+    "brand" : "FORTGPRO",
+    "price" : 1800,
+    "quantity" : 5,
+    "freeshiping" : true,
+    "prestige" : "****"
+  } ]
+}, {
+  "id" : 1641217949969,
+  "totalValue" : 3600.0,
+  "productList" : [ {
+    "id" : 1640808577706,
+    "name" : "Serra de Bancada",
+    "category" : "Ferramentas",
+    "brand" : "FORTGPRO",
+    "price" : 1800,
+    "quantity" : 2,
+    "freeshiping" : true,
+    "prestige" : "****"
+  } ]
+}, {
+  "id" : 1641217968501,
+  "totalValue" : 3600.0,
+  "productList" : [ {
+    "id" : 1640808577706,
+    "name" : "Serra de Bancada",
+    "category" : "Ferramentas",
+    "brand" : "FORTGPRO",
+    "price" : 1800,
+    "quantity" : 2,
     "freeshiping" : true,
     "prestige" : "****"
   } ]

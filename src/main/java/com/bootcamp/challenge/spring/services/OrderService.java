@@ -2,6 +2,7 @@ package com.bootcamp.challenge.spring.services;
 
 import com.bootcamp.challenge.spring.entities.Order;
 import com.bootcamp.challenge.spring.entities.Product;
+import com.bootcamp.challenge.spring.entities.ShoppingCart;
 import com.bootcamp.challenge.spring.repositories.OrderRepository;
 import com.bootcamp.challenge.spring.shared.exceptions.ProductNotFoundException;
 import com.bootcamp.challenge.spring.shared.exceptions.RepositoryException;
@@ -31,6 +32,9 @@ public class OrderService {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ShoppingCartService shoppingCartService;
+
     /** Método usado para criar um novo pedido.
      *
      * @author Samuel Stalschus
@@ -44,7 +48,7 @@ public class OrderService {
      * @throws RepositoryException - Exceção retornada quando ocorre qualquer erro de criação de pedido que seja derivado de um IOExceptionproveniente do repository.
      *
      * */
-    public Order createOrder(List<Product> productList) {
+    public Order createOrder(List<Product> productList, Long shoppingCartId) {
         try {
             satinizeProductList(productList);
             verifyAndUpdateProducts(productList);
@@ -52,8 +56,11 @@ public class OrderService {
             order.setProductList(productList);
             double total = productList.stream().mapToDouble(product -> product.getPrice().doubleValue() * product.getQuantity()).sum();
             order.setTotalValue(BigDecimal.valueOf(total));
-            order.getProductList().add(new Product());
-            return orderRepository.create(order);
+            order = orderRepository.create(order);
+            ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(shoppingCartId);
+            shoppingCartService.addOrder(order, shoppingCart);
+
+            return order;
         } catch (IOException e) {
             throw new RepositoryException("Fail to create a new Order \n\n\n\n" + e.getMessage());
         }
