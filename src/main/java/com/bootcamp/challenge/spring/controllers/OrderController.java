@@ -7,10 +7,8 @@ import com.bootcamp.challenge.spring.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,11 +32,11 @@ public class OrderController {
      * @return ResponseEntity<OrderDTO> - Retorna a Ordem de Compra
      * */
     @PostMapping(value = "")
-    public ResponseEntity<OrderDTO> createOrder(@RequestBody List<ProductCreateOrderDTO> productList){
+    public ResponseEntity<OrderDTO> createOrder(@Nullable @RequestParam Long shoppingCartId, @RequestBody List<ProductCreateOrderDTO> productList){
         OrderDTO orderDTO = new OrderDTO().convert(
                 orderService.createOrder(
                         productList.stream().<Product>map(product -> product.convert())
-                                .collect(Collectors.toList())));
+                                .collect(Collectors.toList()), shoppingCartId));
         return ResponseEntity.status(HttpStatus.CREATED).body(orderDTO);
     }
 
